@@ -1,18 +1,24 @@
-
 // TODO: open  indexedDB
 const indexedDB =
-window.indexedDB ||
-window.mozIndexedDB ||
-window.webkitIndexedDB ||
-window.msIndexedDB ||
-window.shimIndexedDB;
+  window.indexedDB ||
+  window.mozIndexedDB ||
+  window.webkitIndexedDB ||
+  window.msIndexedDB ||
+  window.shimIndexedDB;
 
 let db;
 const request = indexedDB.open("budget", 1);
 
 // TODO: create an object store in the open db
+request.onupgradeneeded = event => {
+  const db = event.target.result;
+  db.createObjectStore("pending", { autoIncrement: true });
+};
 
 // TODO: log any indexedDB errors
+request.onerror = event => {
+  console.log(`Oh no! ${event.target.errorCode}`);
+};
 
 // TODO: add code so that any transactions stored in the db
 // are sent to the backend if/when the user goes online
