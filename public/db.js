@@ -62,7 +62,7 @@ function checkDatabase() {
 // when the user creates a transaction while offline.
 function saveRecord(record) {
   // add your code here
-  const transaction = db.transaction(["pending", "readwrite"]);
+  const transaction = db.transaction(["pending"], "readwrite");
   const store = transaction.objectStore("pending");
   store.add(record);
 }
