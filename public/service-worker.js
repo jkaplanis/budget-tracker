@@ -4,3 +4,13 @@
 // when the app is used offline. HINT: You should use two caches. One for the
 // static assets such ass html, css, js, images, etc; and another cache for
 // the dynamic data from requests to routes beginning with "/api".
+
+const FILES_TO_CACHE = [
+  "/",
+  "/index.html",
+  "/manifest.webmanifest",
+  "/icons/icon-152x152.png",
+  "/icons/icon-192x192.png",
+  "/db.js",
+  "/index.js",
+]
